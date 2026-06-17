@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Dashboard Hợp tác Quốc tế - Đại học Huế</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body class="bg-slate-100 font-sans min-h-screen flex">
+
+    <aside class="w-64 bg-blue-950 text-white flex flex-col fixed h-full z-50 shadow-xl">
+        <div class="p-6 border-b border-blue-900">
+            <h2 class="text-lg font-black uppercase tracking-wider text-orange-400">Đại học Huế</h2>
+            <p class="text-xs text-blue-200 mt-1 font-medium">Hệ thống HTQT Toàn diện</p>
+        </div>
+        <nav class="flex-grow p-4 space-y-2">
+            <button onclick="switchTab('phanh_he_1')" id="btn_phanh_he_1" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-blue-800 text-white font-bold transition">
+                <span>🤝</span> Đối tác & Thỏa thuận
+            </button>
+            <button onclick="switchTab('phanh_he_2')" id="btn_phanh_he_2" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition">
+                <span>✈️</span> Trao đổi Mobility
+            </button>
+            <button onclick="switchTab('phanh_he_3')" id="btn_phanh_he_3" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition">
+                <span>🇪🇺</span> Dự án & Tài trợ
+            </button>
+            <button onclick="switchTab('phanh_he_4')" id="btn_phanh_he_4" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition">
+                <span>🏛️</span> Sự kiện & Tiếp đoàn
+            </button>
+        </nav>
+    </aside>
+
+    <div class="flex-grow ml-64 p-8 min-h-screen flex flex-col">
+        
+        <header class="flex justify-between items-center mb-8 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+            <div>
+                <h2 id="pageTitle" class="text-2xl font-black text-gray-800">Phân hệ 1: Đối tác & Thỏa thuận (MoUs)</h2>
+                <p class="text-gray-500 text-sm mt-1">Hệ thống cơ sở dữ liệu tích hợp trực tuyến Đại học Huế</p>
+            </div>
+            <span class="px-4 py-2 bg-green-50 text-green-700 text-xs font-bold rounded-full">● Trực tuyến (Data Integrated)</span>
+        </header>
+
+        <div id="mainDashboardView" class="space-y-6">
+            
+            <div id="phanh_he_1" class="tab-content space-y-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-blue-600"><p class="text-gray-400 text-xs font-bold uppercase">Tổng văn bản</p><p class="text-2xl font-black text-gray-800" id="mouTotal">0</p></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-emerald-500"><p class="text-gray-400 text-xs font-bold uppercase">Quốc gia</p><p class="text-2xl font-black text-gray-800" id="mouCountries">0</p></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-indigo-500"><p class="text-gray-400 text-xs font-bold uppercase">Đơn vị tham gia</p><p class="text-2xl font-black text-gray-800" id="mouUnits">0</p></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-red-500"><p class="text-gray-400 text-xs font-bold uppercase">Cần chú ý</p><p class="text-2xl font-black text-red-600" id="mouExpiring">0</p></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-5 rounded-xl shadow-sm"><div class="h-64"><canvas id="mouChart"></canvas></div></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm lg:col-span-2">
+                        <div class="overflow-y-auto max-h-64 text-xs">
+                            <table class="w-full text-left" id="mouTable">
+                                <thead><tr class="font-bold text-gray-400"><th>Tên đối tác</th><th>Quốc gia</th><th>Đơn vị quản lý</th><th>Hết hạn</th></tr></thead>
+                                <tbody class="divide-y text-gray-600"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="phanh_he_2" class="tab-content space-y-6 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-indigo-600"><p class="text-gray-400 text-xs font-bold uppercase">Tổng lượt trao đổi</p><p class="text-2xl font-black text-gray-800" id="mbTotal">0</p></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-sky-500"><p class="text-gray-400 text-xs font-bold uppercase">Chiều đi (Outbound)</p><p class="text-2xl font-black text-sky-600" id="mbOutbound">0</p></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-teal-500"><p class="text-gray-400 text-xs font-bold uppercase">Chiều đến (Inbound)</p><p class="text-2xl font-black text-teal-600" id="mbInbound">0</p></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-5 rounded-xl shadow-sm"><div class="h-64"><canvas id="mbChart"></canvas></div></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm lg:col-span-2">
+                        <div class="overflow-y-auto max-h-64 text-xs">
+                            <table class="w-full text-left" id="mbTable">
+                                <thead><tr class="font-bold text-gray-400"><th>Họ tên</th><th>Đơn vị</th><th>Chiều</th><th>Quốc gia</th></tr></thead>
+                                <tbody class="divide-y text-gray-600"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="phanh_he_3" class="tab-content space-y-6 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-emerald-600"><p class="text-gray-400 text-xs font-bold uppercase">Tổng số dự án quốc tế</p><p class="text-2xl font-black text-gray-800" id="pjTotal">0</p></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-purple-600"><p class="text-gray-400 text-xs font-bold uppercase">Số tổ chức tài trợ</p><p class="text-2xl font-black text-purple-600" id="pjFunds">0</p></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-amber-500"><p class="text-gray-400 text-xs font-bold uppercase">Dự án đang triển khai</p><p class="text-2xl font-black text-amber-600" id="pjActive">0</p></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-5 rounded-xl shadow-sm"><div class="h-64"><canvas id="pjChart"></canvas></div></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm lg:col-span-2">
+                        <div class="overflow-y-auto max-h-64 text-xs">
+                            <table class="w-full text-left" id="pjTable">
+                                <thead><tr class="font-bold text-gray-400"><th>Tên dự án</th><th>Quỹ tài trợ</th><th>Kinh phí</th><th>Tình trạng</th></tr></thead>
+                                <tbody class="divide-y text-gray-600"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="phanh_he_4" class="tab-content space-y-6 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-teal-600"><p class="text-gray-400 text-xs font-bold uppercase">Tổng lượt tiếp đoàn</p><p class="text-2xl font-black text-gray-800" id="dlTotal">0</p></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-fuchsia-600"><p class="text-gray-400 text-xs font-bold uppercase">Quốc gia đối tác</p><p class="text-2xl font-black text-fuchsia-600" id="dlCountries">0</p></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-blue-500"><p class="text-gray-400 text-xs font-bold uppercase">Đơn vị tiếp đón</p><p class="text-2xl font-black text-blue-600" id="dlUnits">0</p></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-5 rounded-xl shadow-sm"><div class="h-64"><canvas id="dlChart"></canvas></div></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm lg:col-span-2">
+                        <div class="overflow-y-auto max-h-64 text-xs">
+                            <table class="w-full text-left" id="dlTable">
+                                <thead><tr class="font-bold text-gray-400"><th>Đoàn đến</th><th>Quốc gia</th><th>Đơn vị tiếp đón</th><th>Ngày đến</th></tr></thead>
+                                <tbody class="divide-y text-gray-600"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/csv" id="csvDataPhanhHe1">Tên đối tác,Quốc gia,Đơn vị,Loại hình,Ngày hết hạn,Trạng thái
+University and Tokiwa,Nhật Bản,Trường Đại học Ngoại ngữ,Thỏa thuận,07/06/2026,Còn hoạt động
+Osaka University of Tourism,Nhật Bản,Trường Đại học Ngoại ngữ,Thỏa thuận,21/06/2026,Còn hoạt động
+Japan Women's University,Nhật Bản,Trường Đại học Ngoại ngữ,Thỏa thuận,01/07/2026,Còn hoạt động
+Chugoku Gakuen University,Nhật Bản,Đại học Huế,Biên bản ghi nhớ,14/09/2026,Còn hoạt động
+Bernhard Nocht Institute for Tropical Medicine,Đức,Trường Đại học Y Dược,Biên bản ghi nhớ,01/10/2026,Còn hoạt động
+Nagoya University,Nhật Bản,Trường Đại học Y Dược,Biên bản ghi nhớ,15/10/2026,Còn hoạt động
+The Thai Chamber of Commerce,Thái Lan,Đại học Huế,Biên bản ghi nhớ,10/11/2026,Còn hoạt động
+Ghent University,Bỉ,Đại học Huế,Thỏa thuận,2027-03-02,Còn hoạt động
+Tokyo Kenzai University,Nhật Bản,Đại học Huế,Biên bản ghi nhớ,2027-03-10,Còn hoạt động
+University of Innsbruck,Áo,Trường Đại học Khoa học,Biên bản ghi nhớ,20/11/2028,Còn hoạt động
+Ferris University,Nhật Bản,Ban Hợp tác Quốc tế,MOA,15/05/2026,Sắp hết hạn</script>
+
+    <script type="text/csv" id="csvDataPhanhHe2">Họ tên,Đơn vị,Chiều đi_đến,Quốc gia,Loại hình
+Nguyễn Hoài Nam,Trường Đại học Ngoại ngữ,Outbound,Nhật Bản,Sinh viên trao đổi
+Trần Thị Thảo Nguyên,Trường Đại học Kinh tế,Outbound,Áo,Sinh viên trao đổi
+Lê Hoàng Thiên An,Ban Hợp tác Quốc tế,Outbound,Thái Lan,Cán bộ nghiên cứu
+Prof. Jiunn-Yuan Lin,Trường Đại học Sư phạm,Inbound,Đài Loan,Chuyên gia giảng dạy
+Zea Jusztina Gyarmati,Trường Đại học Sư phạm,Inbound,Hungary,Nghiên cứu sinh
+Christine Seidelin Andreasen,Trường Đại học Nông Lâm,Inbound,Hà Lan,Nghiên cứu sinh</script>
+
+    <script type="text/csv" id="csvDataPhanhHe3">Tên dự án,Quỹ tài trợ,Kinh phí,Tình trạng
+Nâng cao năng lực số trong quản trị đại học,Erasmus+,150000 USD,Đang giải ngân
+Nghiên cứu thích ứng biến đổi khí hậu vùng duyên hải,DAAD (Đức),85000 USD,Đang giải ngân
+Chuyển giao công nghệ xử lý nước thải y tế,JICA (Nhật Bản),120000 USD,Hoàn thành quyết toán
+Phát triển giáo dục STEAM tại các trường phổ thông,Quỹ Eurasia,45000 USD,Đang giải ngân</script>
+
+    <script type="text/csv" id="csvDataPhanhHe4">Đoàn đến,Quốc gia,Đơn vị tiếp đón,Ngày đến,Trưởng đoàn
+Phái đoàn Đại học Wageningen,Hà Lan,Trường Đại học Nông Lâm,05/01/2026,Christine Seidelin Andreasen (NCS)
+Đoàn nghiên cứu Đại học Eotvos Lorand,Hungary,Trường Đại học Sư phạm,05/01/2026,NCS. Zea Jusztina Gyarmati
+Phái đoàn Y khoa Đại học Yale,Hoa Kỳ,Trường Đại học Y Dược,07/01/2026,GS. Robert M. Rohrbaugh
+Đoàn Đại học Quốc gia Singapore (NUS),Singapore,Trường Đại học Y Dược,22/07/2026,Dr. Tan Chorh Chuan</script>
+
+    <script>
+        let currentTab = 'phanh_he_1';
+        let database = { phanh_he_1: null, phanh_he_2: null, phanh_he_3: null, phanh_he_4: null };
+        let charts = { chart1: null, chart2: null, chart3: null, chart4: null };
+
+        // Tự động load toàn bộ dữ liệu thô ngay khi mở trang web
+        window.addEventListener('DOMContentLoaded', () => {
+            database.phanh_he_1 = Papa.parse(document.getElementById('csvDataPhanhHe1').textContent, {header:true, skipEmptyLines:true}).data;
+            database.phanh_he_2 = Papa.parse(document.getElementById('csvDataPhanhHe2').textContent, {header:true, skipEmptyLines:true}).data;
+            database.phanh_he_3 = Papa.parse(document.getElementById('csvDataPhanhHe3').textContent, {header:true, skipEmptyLines:true}).data;
+            database.phanh_he_4 = Papa.parse(document.getElementById('csvDataPhanhHe4').textContent, {header:true, skipEmptyLines:true}).data;
+            
+            // Kích hoạt hiển thị phân hệ đầu tiên
+            switchTab('phanh_he_1');
+        });
+
+        function switchTab(tabId) {
+            currentTab = tabId;
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.replace('bg-blue-800', 'text-blue-200'));
+            document.getElementById('btn_' + tabId).classList.replace('text-blue-200', 'bg-blue-800');
+
+            const textMap = { 'phanh_he_1': 'Đối tác & Thỏa thuận (MoUs)', 'phanh_he_2': 'Trao đổi Cán bộ & Sinh viên (Mobility)', 'phanh_he_3': 'Dự án Quốc tế & Tài trợ', 'phanh_he_4': 'Sự kiện & Tiếp đoàn' };
+            document.getElementById('pageTitle').innerText = textMap[tabId];
+
+            if(currentTab === 'phanh_he_1') buildMouDashboard(database['phanh_he_1']);
+            if(currentTab === 'phanh_he_2') buildMobilityDashboard(database['phanh_he_2']);
+            if(currentTab === 'phanh_he_3') buildProjectDashboard(database['phanh_he_3']);
+            if(currentTab === 'phanh_he_4') buildDelegationDashboard(database['phanh_he_4']);
+        }
+
+        function buildMouDashboard(data) {
+            let countries = new Set(), units = new Set(), expiring = 0, countryCounts = {};
+            const tbody = document.querySelector('#mouTable tbody'); tbody.innerHTML = '';
+            data.forEach(item => {
+                const name = item['Tên đối tác'] || '-', country = item['Quốc gia'] || '-', expiry = item['Ngày hết hạn'] || '-', status = item['Trạng thái'] || '', unit = item['Đơn vị'] || '-';
+                if(country && country !== '-') { countries.add(country); countryCounts[country] = (countryCounts[country] || 0) + 1; }
+                if(unit && unit !== '-') units.add(unit);
+                if(status.includes('hết hạn') || status.includes('dừng')) expiring++;
+                tbody.innerHTML += `<tr><td class="py-1.5 font-bold truncate max-w-[180px]">${name}</td><td>${country}</td><td>${unit}</td><td>${expiry}</td></tr>`;
+            });
+            document.getElementById('mouTotal').innerText = data.length;
+            document.getElementById('mouCountries').innerText = countries.size;
+            document.getElementById('mouUnits').innerText = units.size;
+            document.getElementById('mouExpiring').innerText = expiring;
+
+            if(charts.chart1) charts.chart1.destroy();
+            const sorted = Object.entries(countryCounts).sort((a,b)=>b[1]-a[1]).slice(0,5);
+            charts.chart1 = new Chart(document.getElementById('mouChart').getContext('2d'), {
+                type: 'doughnut',
+                data: { labels: sorted.map(c=>c[0]), datasets: [{ data: sorted.map(c=>c[1]), backgroundColor: ['#1e3a8a','#10b981','#f97316','#6366f1','#ec4899'] }] },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        }
+
+        function buildMobilityDashboard(data) {
+            let outbound = 0, inbound = 0;
+            const tbody = document.querySelector('#mbTable tbody'); tbody.innerHTML = '';
+            data.forEach(item => {
+                const name = item['Họ tên'] || '-', unit = item['Đơn vị'] || '-', direction = item['Chiều đi_đến'] || 'Outbound', country = item['Quốc gia'] || '-';
+                if(direction.toLowerCase().includes('out')) outbound++; else inbound++;
+                tbody.innerHTML += `<tr><td class="py-1.5 font-bold">${name}</td><td>${unit}</td><td>${direction}</td><td>${country}</td></tr>`;
+            });
+            document.getElementById('mbTotal').innerText = data.length;
+            document.getElementById('mbOutbound').innerText = outbound;
+            document.getElementById('mbInbound').innerText = inbound;
+
+            if(charts.chart2) charts.chart2.destroy();
+            charts.chart2 = new Chart(document.getElementById('mbChart').getContext('2d'), {
+                type: 'bar',
+                data: { labels: ['Chiều đi (Outbound)', 'Chiều đến (Inbound)'], datasets: [{ label: 'Số người', data: [outbound, inbound], backgroundColor: ['#0284c7', '#0d9488'] }] },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        }
+
+        function buildProjectDashboard(data) {
+            let activeCount = 0, fundSources = new Set(), fundCounts = {};
+            const tbody = document.querySelector('#pjTable tbody'); tbody.innerHTML = '';
+            data.forEach(item => {
+                const pName = item['Tên dự án'] || '-', fund = item['Quỹ tài trợ'] || '-', budget = item['Kinh phí'] || '-', status = item['Tình trạng'] || '-';
+                if(fund && fund !== '-') { fundSources.add(fund); fundCounts[fund] = (fundCounts[fund] || 0) + 1; }
+                if(status.toLowerCase().includes('giải ngân') || status.toLowerCase().includes('khai')) activeCount++;
+                tbody.innerHTML += `<tr><td class="py-1.5 font-bold truncate max-w-[200px]">${pName}</td><td>${fund}</td><td class="font-semibold text-blue-700">${budget}</td><td>${status}</td></tr>`;
+            });
+            document.getElementById('pjTotal').innerText = data.length;
+            document.getElementById('pjFunds').innerText = fundSources.size;
+            document.getElementById('pjActive').innerText = activeCount;
+
+            if(charts.chart3) charts.chart3.destroy();
+            charts.chart3 = new Chart(document.getElementById('pjChart').getContext('2d'), {
+                type: 'pie',
+                data: { labels: Object.keys(fundCounts), datasets: [{ data: Object.values(fundCounts), backgroundColor: ['#10b981', '#f59e0b', '#3b82f6', '#6366f1'] }] },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        }
+
+        function buildDelegationDashboard(data) {
+            let dlCountries = new Set(), dlUnits = new Set(), countryCounts = {};
+            const tbody = document.querySelector('#dlTable tbody'); tbody.innerHTML = '';
+            data.forEach(item => {
+                const name = item['Đoàn đến'] || '-', country = item['Quốc gia'] || '-', unit = item['Đơn vị tiếp đón'] || '-', date = item['Ngày đến'] || '-';
+                if(country && country !== '-') { dlCountries.add(country); countryCounts[country] = (countryCounts[country] || 0) + 1; }
+                if(unit && unit !== '-') dlUnits.add(unit);
+                tbody.innerHTML += `<tr><td class="py-1.5 font-bold truncate max-w-[200px]">${name}</td><td>${country}</td><td>${unit}</td><td class="font-mono text-teal-700 font-semibold">${date}</td></tr>`;
+            });
+            document.getElementById('dlTotal').innerText = data.length;
+            document.getElementById('dlCountries').innerText = dlCountries.size;
+            document.getElementById('dlUnits').innerText = dlUnits.size;
+
+            if(charts.chart4) charts.chart4.destroy();
+            charts.chart4 = new Chart(document.getElementById('dlChart').getContext('2d'), {
+                type: 'polarArea',
+                data: { labels: Object.keys(countryCounts), datasets: [{ data: Object.values(countryCounts), backgroundColor: ['#0d9488', '#8b5cf6', '#ec4899', '#f59e0b'] }] },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        }
+    </script>
+</body>
+</html>
