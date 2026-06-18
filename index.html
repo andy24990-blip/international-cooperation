@@ -328,9 +328,14 @@ Chương trình thực tập ngắn hạn ngành Du lịch,Đại học Khon Kae
         let charts = {};
         
         // Mảng bộ nhớ riêng chứa danh sách tệp PDF văn bản báo cáo hành chính
-        let pdfReportsDatabase = [
-            { id: 1, name: 'Báo cáo tổng kết công tác Hợp tác Quốc tế năm học 2025-2026', unit: 'Ban Hợp tác Quốc tế', date: '15/05/2026', fileData: null },
-            { id: 2, name: 'Kế hoạch triển khai dự án trao đổi khu vực ASEAN+ Mobility', unit: 'Ban Hợp tác Quốc tế', date: '02/06/2026', fileData: null }
+               let pdfReportsDatabase = [
+            { 
+                id: 1, 
+                name: 'Báo cáo công tác HTQT 6 tháng đầu năm 2026', 
+                unit: 'Ban Khoa học Công nghệ và Quan hệ Quốc tế', 
+                date: '15/05/2026', 
+                fileData: 'https://drive.google.com/file/d/1fmPlCT-uc8uA__UkMqLmhXVkG_fy7U9H/view?usp=sharing' 
+            }           
         ];
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -443,8 +448,8 @@ Chương trình thực tập ngắn hạn ngành Du lịch,Đại học Khon Kae
         function viewPdfWindow(id) {
             const report = pdfReportsDatabase.find(r => r.id == id);
             if(report && report.fileData) {
-                const pdfWindow = window.open("");
-                pdfWindow.document.write(`<iframe width='100%' height='100%' src='${report.fileData}'></iframe>`);
+                // Mở trực tiếp liên kết Google Drive ở tab mới
+                window.open(report.fileData, "_blank");
             }
         }
 
