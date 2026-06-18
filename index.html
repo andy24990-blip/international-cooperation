@@ -10,7 +10,6 @@
 </head>
 <body class="bg-slate-100 font-sans min-h-screen flex flex-col md:flex-row">
 
-    <!-- NÚT MENU HAMBURGER (CHO DI ĐỘNG) -->
     <div class="md:hidden bg-blue-950 text-white p-4 flex justify-between items-center shadow-md sticky top-0 z-50">
         <div>
             <h2 class="text-sm font-black uppercase text-orange-400">Đại học Huế</h2>
@@ -21,7 +20,6 @@
         </button>
     </div>
 
-    <!-- SIDEBAR ĐIỀU HƯỚNG BÊN TRÁI -->
     <aside id="sidebar" class="w-64 bg-blue-950 text-white flex flex-col fixed md:sticky top-0 left-0 h-full md:h-screen z-50 shadow-xl transition-transform duration-300 transform -translate-x-full md:translate-x-0">
         <div class="p-5 border-b border-blue-900 flex justify-between items-center">
             <div>
@@ -32,31 +30,33 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
         </div>
-        <nav class="flex-grow p-4 space-y-1.5 overflow-y-auto">
-            <!-- ĐÃ ĐỔI TÊN THÀNH VĂN BẢN HỢP TÁC -->
-            <button onclick="switchTab('phanh_he_1')" id="btn_phanh_he_1" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl bg-blue-800 text-white font-bold transition text-sm">
+        <nav class="flex-grow p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-140px)]">
+            <button onclick="switchTab('phanh_he_1')" id="btn_phanh_he_1" class="tab-btn w-full flex items-center gap-3 px-4 py-2 rounded-xl bg-blue-800 text-white font-bold transition text-xs">
                 <span>🤝</span> Văn bản hợp tác
             </button>
-            <button onclick="switchTab('phanh_he_2_can_bo')" id="btn_phanh_he_2_can_bo" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+            <button onclick="switchTab('phanh_he_2_can_bo')" id="btn_phanh_he_2_can_bo" class="tab-btn w-full flex items-center gap-3 px-4 py-2 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-xs">
                 <span>👨‍🏫</span> Trao đổi Cán bộ
             </button>
-            <button onclick="switchTab('phanh_he_2_sinh_vien')" id="btn_phanh_he_2_sinh_vien" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+            <button onclick="switchTab('phanh_he_2_sinh_vien')" id="btn_phanh_he_2_sinh_vien" class="tab-btn w-full flex items-center gap-3 px-4 py-2 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-xs">
                 <span>🎓</span> Trao đổi Sinh viên
             </button>
-            <button onclick="switchTab('phanh_he_4_doan_vao')" id="btn_phanh_he_4_doan_vao" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+            <button onclick="switchTab('phanh_he_4_doan_vao')" id="btn_phanh_he_4_doan_vao" class="tab-btn w-full flex items-center gap-3 px-4 py-2 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-xs">
                 <span>🛫</span> Đoàn quốc tế vào
             </button>
-            <button onclick="switchTab('phanh_he_6_doan_ra')" id="btn_phanh_he_6_doan_ra" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+            <button onclick="switchTab('phanh_he_6_doan_ra')" id="btn_phanh_he_6_doan_ra" class="tab-btn w-full flex items-center gap-3 px-4 py-2 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-xs">
                 <span>🛬</span> Đoàn công tác ra
             </button>
-            <button onclick="switchTab('phanh_he_3')" id="btn_phanh_he_3" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+            <button onclick="switchTab('phanh_he_3')" id="btn_phanh_he_3" class="tab-btn w-full flex items-center gap-3 px-4 py-2 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-xs">
                 <span>🇪🇺</span> Dự án & Tài trợ
             </button>
-            <button onclick="switchTab('phanh_he_7_lien_ket')" id="btn_phanh_he_7_lien_ket" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+            <button onclick="switchTab('phanh_he_7_lien_ket')" id="btn_phanh_he_7_lien_ket" class="tab-btn w-full flex items-center gap-3 px-4 py-2 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-xs">
                 <span>📚</span> Liên kết quốc tế
             </button>
-            <button onclick="switchTab('phanh_he_8_ngan_han')" id="btn_phanh_he_8_ngan_han" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+            <button onclick="switchTab('phanh_he_8_ngan_han')" id="btn_phanh_he_8_ngan_han" class="tab-btn w-full flex items-center gap-3 px-4 py-2 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-xs">
                 <span>⏱️</span> Trao đổi ngắn hạn
+            </button>
+            <button onclick="switchTab('phanh_he_9_bao_cao')" id="btn_phanh_he_9_bao_cao" class="tab-btn w-full flex items-center gap-3 px-4 py-2 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-xs">
+                <span>📋</span> Báo cáo thường kỳ
             </button>
         </nav>
         <div class="p-4 border-t border-blue-900 text-center text-xs text-blue-300">
@@ -66,31 +66,27 @@
 
     <div id="overlay" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"></div>
 
-    <!-- VÙNG NỘI DUNG CHÍNH BÊN PHẢI -->
     <div class="flex-grow p-4 md:p-8 min-h-screen flex flex-col w-full overflow-x-hidden">
         
-        <!-- HEADER VỚI THANH TÌM KIẾM TRA CỨU -->
         <header class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 bg-white p-5 rounded-2xl shadow-sm border border-gray-100 gap-4">
             <div class="min-w-[280px]">
-                <!-- ĐÃ ĐỔI TIÊU ĐỀ TRANG MẶC ĐỊNH -->
                 <h2 id="pageTitle" class="text-xl md:text-2xl font-black text-gray-800 leading-tight">Văn bản hợp tác (MoUs/MoAs)</h2>
                 <p class="text-gray-500 text-xs mt-1">Hệ thống cơ sở dữ liệu tích hợp trực tuyến Đại học Huế</p>
             </div>
             
-            <!-- THANH TÌM KIẾM THÔNG TIN NHANH -->
-            <div class="relative w-full lg:max-w-md flex-grow">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <div class="relative w-full lg:max-w-md flex-grow flex gap-2">
+                <div class="relative flex-grow">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </div>
+                    <input type="text" id="dashboardSearchInput" oninput="handleSearch(this.value)" placeholder="Tra cứu nhanh thông tin dữ liệu..." class="w-full pl-9 pr-4 py-2.5 text-sm bg-slate-50 border border-gray-100 rounded-xl outline-none focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition">
                 </div>
-                <input type="text" id="dashboardSearchInput" oninput="handleSearch(this.value)" placeholder="Tra cứu nhanh tên đối tác, quốc gia, đơn vị..." class="w-full pl-9 pr-4 py-2.5 text-sm bg-slate-50 border border-gray-100 rounded-xl outline-none focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition">
+                <button onclick="exportBackupData()" title="Lưu trữ bản sao cấu trúc dữ liệu và tệp PDF" class="px-3 py-2 bg-blue-900 text-white text-xs font-bold rounded-xl hover:bg-blue-800 transition shadow-sm whitespace-nowrap">💾 Lưu bộ nhớ</button>
             </div>
-
-            <span class="px-3 py-1.5 bg-green-50 text-green-700 text-[10px] font-bold rounded-full whitespace-nowrap hidden sm:inline-block">● Trực tuyến (Data Integrated)</span>
         </header>
 
         <div id="mainDashboardView" class="space-y-6">
             
-            <!-- PHÂN HỆ 1: VĂN BẢN HỢP TÁC -->
             <div id="phanh_he_1" class="tab-content space-y-6">
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-blue-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng văn bản</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="mouTotal">0</p></div>
@@ -111,7 +107,6 @@
                 </div>
             </div>
 
-            <!-- PHÂN HỆ 2A: TRAO ĐỔI CÁN BỘ -->
             <div id="phanh_he_2_can_bo" class="tab-content space-y-6 hidden">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-indigo-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng cán bộ trao đổi</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="cbTotal">0</p></div>
@@ -131,7 +126,6 @@
                 </div>
             </div>
 
-            <!-- PHÂN HỆ 2B: TRAO ĐỔI SINH VIÊN -->
             <div id="phanh_he_2_sinh_vien" class="tab-content space-y-6 hidden">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-violet-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng sinh viên trao đổi</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="svTotal">0</p></div>
@@ -151,7 +145,6 @@
                 </div>
             </div>
 
-            <!-- PHÂN HỆ 4: ĐOÀN VÀO -->
             <div id="phanh_he_4_doan_vao" class="tab-content space-y-6 hidden">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-teal-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng đoàn vào</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="dlTotal">0</p></div>
@@ -171,7 +164,6 @@
                 </div>
             </div>
 
-            <!-- PHÂN HỆ 6: ĐOÀN RA -->
             <div id="phanh_he_6_doan_ra" class="tab-content space-y-6 hidden">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-orange-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng đoàn công tác ra</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="outTotal">0</p></div>
@@ -191,7 +183,6 @@
                 </div>
             </div>
 
-            <!-- PHÂN HỆ 3: DỰ ÁN QUỐC TẾ -->
             <div id="phanh_he_3" class="tab-content space-y-6 hidden">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-emerald-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng số dự án</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="pjTotal">0</p></div>
@@ -211,7 +202,6 @@
                 </div>
             </div>
 
-            <!-- PHÂN HỆ 7: CHƯƠNG TRÌNH LIÊN KẾT QUỐC TẾ -->
             <div id="phanh_he_7_lien_ket" class="tab-content space-y-6 hidden">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-cyan-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng chương trình liên kết</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="lkTotal">0</p></div>
@@ -231,7 +221,6 @@
                 </div>
             </div>
 
-            <!-- PHÂN HỆ 8: CHƯƠNG TRÌNH TRAO ĐỔI NGẮN HẠN -->
             <div id="phanh_he_8_ngan_han" class="tab-content space-y-6 hidden">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-lime-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Số lớp / Khóa ngắn hạn</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="nhTotal">0</p></div>
@@ -251,10 +240,38 @@
                 </div>
             </div>
 
+            <div id="phanh_he_9_bao_cao" class="tab-content space-y-6 hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-5 rounded-2xl shadow-sm space-y-4">
+                        <h4 class="font-bold text-gray-800 text-sm uppercase tracking-wide">Thêm Văn bản báo cáo đã ký</h4>
+                        <div class="space-y-3 text-xs">
+                            <div><label class="block text-gray-400 font-bold mb-1">TÊN BÁO CÁO / VĂN BẢN</label><input type="text" id="pdfReportName" placeholder="Ví dụ: Báo cáo Quý II - HTQT Đại học Huế" class="w-full p-2.5 bg-slate-50 border border-gray-200 rounded-lg outline-none"></div>
+                            <div><label class="block text-gray-400 font-bold mb-1">ĐƠN VỊ SOẠN THẢO</label><input type="text" id="pdfReportUnit" placeholder="Ban Hợp tác Quốc tế" class="w-full p-2.5 bg-slate-50 border border-gray-200 rounded-lg outline-none"></div>
+                            <div><label class="block text-gray-400 font-bold mb-1">NGÀY KÝ / BAN HÀNH</label><input type="text" id="pdfReportDate" placeholder="18/06/2026" class="w-full p-2.5 bg-slate-50 border border-gray-200 rounded-lg outline-none"></div>
+                            <div>
+                                <label class="block text-gray-400 font-bold mb-1">TỆP VĂN BẢN (PDF ĐÃ ĐÓNG DẤU)</label>
+                                <input type="file" id="pdfFileInputInput" accept=".pdf" class="w-full p-1.5 bg-slate-50 border border-gray-200 rounded-lg">
+                            </div>
+                            <button onclick="addNewPdfReport()" class="w-full py-2.5 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition shadow-md">Kích hoạt & Lưu Văn bản</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl shadow-sm lg:col-span-2">
+                        <h4 class="font-bold text-gray-800 text-sm uppercase tracking-wide mb-4">Danh mục văn bản lưu trữ lưu trữ hành chính</h4>
+                        <div class="overflow-x-auto text-xs max-w-full">
+                            <table class="w-full text-left" id="pdfTable">
+                                <thead><tr class="font-bold text-gray-400 border-b pb-2"><th>Tên văn bản báo cáo</th><th>Đơn vị ban hành</th><th>Ngày ký</th><th>Bản ký đóng dấu</th></tr></thead>
+                                <tbody class="divide-y text-gray-600">
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- KHU VỰC DỮ LIỆU RUỘT TÍCH HỢP SẴN -->
     <script type="text/csv" id="csvDataPhanhHe1">Tên đối tác,Quốc gia,Đơn vị,Loại hình,Ngày hết hạn,Trạng thái
 University and Tokiwa,Nhật Bản,Trường Đại học Ngoại ngữ,Thỏa thuận,07/06/2026,Còn hoạt động
 Osaka University of Tourism,Nhật Bản,Trường Đại học Ngoại ngữ,Thỏa thuận,21/06/2026,Còn hoạt động
@@ -305,11 +322,16 @@ Khóa tập huấn chuyên sâu Y học cổ truyền ngắn hạn,Trường Đ�
 Trại hè trải nghiệm STEAM và Chuyển đổi số,Trường Đại học Sư phạm,Hoa Kỳ,18,Inbound
 Chương trình thực tập ngắn hạn ngành Du lịch,Đại học Khon Kaen,Trường Đại học Ngoại ngữ,12,Outbound</script>
 
-    <!-- THUẬT TOÁN ĐIỀU HƯỚNG VÀ XỬ LÝ -->
     <script>
         let currentTab = 'phanh_he_1';
         let database = {};
         let charts = {};
+        
+        // Mảng bộ nhớ riêng chứa danh sách tệp PDF văn bản báo cáo hành chính
+        let pdfReportsDatabase = [
+            { id: 1, name: 'Báo cáo tổng kết công tác Hợp tác Quốc tế năm học 2025-2026', unit: 'Ban Hợp tác Quốc tế', date: '15/05/2026', fileData: null },
+            { id: 2, name: 'Kế hoạch triển khai dự án trao đổi khu vực ASEAN+ Mobility', unit: 'Ban Hợp tác Quốc tế', date: '02/06/2026', fileData: null }
+        ];
 
         window.addEventListener('DOMContentLoaded', () => {
             database.phanh_he_1 = Papa.parse(document.getElementById('csvDataPhanhHe1').textContent, {header:true, skipEmptyLines:true}).data;
@@ -321,6 +343,7 @@ Chương trình thực tập ngắn hạn ngành Du lịch,Đại học Khon Kae
             database.phanh_he_6_doan_ra = Papa.parse(document.getElementById('csvDataPhanhHe6').textContent, {header:true, skipEmptyLines:true}).data;
             database.phanh_he_7_lien_ket = Papa.parse(document.getElementById('csvDataPhanhHe7').textContent, {header:true, skipEmptyLines:true}).data;
             database.phanh_he_8_ngan_han = Papa.parse(document.getElementById('csvDataPhanhHe8').textContent, {header:true, skipEmptyLines:true}).data;
+            database.phanh_he_9_bao_cao = pdfReportsDatabase;
             
             switchTab('phanh_he_1');
         });
@@ -347,6 +370,7 @@ Chương trình thực tập ngắn hạn ngành Du lịch,Đại học Khon Kae
             if(currentTab === 'phanh_he_6_doan_ra') renderOutbound(filteredData);
             if(currentTab === 'phanh_he_7_lien_ket') renderLienKet(filteredData);
             if(currentTab === 'phanh_he_8_ngan_han') renderNganHan(filteredData);
+            if(currentTab === 'phanh_he_9_bao_cao') renderPdfReportsTable(filteredData);
         }
 
         function switchTab(tabId) {
@@ -359,15 +383,8 @@ Chương trình thực tập ngắn hạn ngành Du lịch,Đại học Khon Kae
             document.getElementById('dashboardSearchInput').value = '';
 
             const textMap = { 
-                // ĐÃ ĐỔI TÊN Ở ĐÂY ĐỂ ĐỒNG BỘ HIỂN THỊ
-                'phanh_he_1': 'Văn bản hợp tác (MoUs/MoAs)', 
-                'phanh_he_2_can_bo': 'Trao đổi Cán bộ & Chuyên gia', 
-                'phanh_he_2_sinh_vien': 'Trao đổi Sinh viên & NCS', 
-                'phanh_he_3': 'Dự án Quốc tế & Tài trợ', 
-                'phanh_he_4_doan_vao': 'Đoàn Quốc tế Vào (Inbound)',
-                'phanh_he_6_doan_ra': 'Đoàn Công tác Ra (Outbound)',
-                'phanh_he_7_lien_ket': 'Chương trình Liên kết Quốc tế',
-                'phanh_he_8_ngan_han': 'Chương trình Trao đổi Ngắn hạn'
+                'phanh_he_1': 'Văn bản hợp tác (MoUs/MoAs)', 'phanh_he_2_can_bo': 'Trao đổi Cán bộ & Chuyên gia', 'phanh_he_2_sinh_vien': 'Trao đổi Sinh viên & NCS', 'phanh_he_3': 'Dự án Quốc tế & Tài trợ', 'phanh_he_4_doan_vao': 'Đoàn Quốc tế Vào (Inbound)', 'phanh_he_6_doan_ra': 'Đoàn Công tác Ra (Outbound)', 'phanh_he_7_lien_ket': 'Chương trình Liên kết Quốc tế', 'phanh_he_8_ngan_han': 'Chương trình Trao đổi Ngắn hạn',
+                'phanh_he_9_bao_cao': 'Báo cáo định kỳ & Văn bản hành chính đã ký'
             };
             document.getElementById('pageTitle').innerText = textMap[tabId];
 
@@ -377,6 +394,72 @@ Chương trình thực tập ngắn hạn ngành Du lịch,Đại học Khon Kae
             handleSearch('');
         }
 
+        // --- CHỨC NĂNG PHÂN HỆ 9: MÃ HÓA VÀ NẠP FILE PDF ĐÃ ĐÓNG DẤU ---
+        function addNewPdfReport() {
+            const name = document.getElementById('pdfReportName').value.trim();
+            const unit = document.getElementById('pdfReportUnit').value.trim();
+            const date = document.getElementById('pdfReportDate').value.trim();
+            const fileInput = document.getElementById('pdfFileInputInput');
+
+            if(!name || !unit) { alert('Vui lòng điền tên văn bản và đơn vị ban hành báo cáo.'); return; }
+
+            if(fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Data = e.target.result; // Mã hóa dữ liệu tệp PDF
+                    pdfReportsDatabase.unshift({ id: Date.now(), name: name, unit: unit, date: date || '18/06/2026', fileData: base64Data });
+                    database.phanh_he_9_bao_cao = pdfReportsDatabase;
+                    handleSearch('');
+                    clearPdfForm();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                pdfReportsDatabase.unshift({ id: Date.now(), name: name, unit: unit, date: date || '18/06/2026', fileData: null });
+                database.phanh_he_9_bao_cao = pdfReportsDatabase;
+                handleSearch('');
+                clearPdfForm();
+            }
+        }
+
+        function clearPdfForm() {
+            document.getElementById('pdfReportName').value = '';
+            document.getElementById('pdfReportUnit').value = '';
+            document.getElementById('pdfReportDate').value = '';
+            document.getElementById('pdfFileInputInput').value = '';
+        }
+
+        function renderPdfReportsTable(data) {
+            const tbody = document.querySelector('#pdfTable tbody');
+            tbody.innerHTML = '';
+            data.forEach(item => {
+                let actionBtn = item.fileData ? 
+                    `<button onclick="viewPdfWindow('${item.id}')" class="px-2 py-1 bg-blue-100 text-blue-700 font-bold rounded hover:bg-blue-200 transition">📄 Xem File PDF</button>` : 
+                    `<span class="text-gray-400 italic">Chưa đính kèm</span>`;
+                tbody.innerHTML += `<tr><td class="py-2.5 font-bold max-w-[250px] truncate" title="${item.name}">${item.name}</td><td>${item.unit}</td><td class="font-mono">${item.date}</td><td>${actionBtn}</td></tr>`;
+            });
+        }
+
+        function viewPdfWindow(id) {
+            const report = pdfReportsDatabase.find(r => r.id == id);
+            if(report && report.fileData) {
+                const pdfWindow = window.open("");
+                pdfWindow.document.write(`<iframe width='100%' height='100%' src='${report.fileData}'></iframe>`);
+            }
+        }
+
+        // Xuất file lưu trữ cấu trúc để không bị mất khi F5 trình duyệt
+        function exportBackupData() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pdfReportsDatabase));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "BoNho_BaoCao_HTQT.json");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        // --- CÁC HÀM RENDER DỮ LIỆU CŨ (GIỮ NGUYÊN ĐỂ CHẠY HỆ THỐNG) ---
         function renderMou(data) {
             let countries = new Set(), units = new Set(), expiring = 0, countryCounts = {};
             const tbody = document.querySelector('#mouTable tbody'); tbody.innerHTML = '';
@@ -391,159 +474,89 @@ Chương trình thực tập ngắn hạn ngành Du lịch,Đại học Khon Kae
             document.getElementById('mouCountries').innerText = countries.size;
             document.getElementById('mouUnits').innerText = units.size;
             document.getElementById('mouExpiring').innerText = expiring;
-
             if(charts.chart1) charts.chart1.destroy();
             const sorted = Object.entries(countryCounts).sort((a,b)=>b[1]-a[1]).slice(0,5);
-            charts.chart1 = new Chart(document.getElementById('mouChart').getContext('2d'), {
-                type: 'doughnut',
-                data: { labels: sorted.map(c=>c[0]), datasets: [{ data: sorted.map(c=>c[1]), backgroundColor: ['#1e3a8a','#10b981','#f97316','#6366f1','#ec4899'] }] },
-                options: { responsive: true, maintainAspectRatio: false }
-            });
+            charts.chart1 = new Chart(document.getElementById('mouChart').getContext('2d'), { type: 'doughnut', data: { labels: sorted.map(c=>c[0]), datasets: [{ data: sorted.map(c=>c[1]), backgroundColor: ['#1e3a8a','#10b981','#f97316','#6366f1','#ec4899'] }] }, options: { responsive: true, maintainAspectRatio: false } });
         }
-
         function renderCanBo(data) {
-            let outbound = 0, inbound = 0;
-            const tbody = document.querySelector('#cbTable tbody'); tbody.innerHTML = '';
+            let outbound = 0, inbound = 0; const tbody = document.querySelector('#cbTable tbody'); tbody.innerHTML = '';
             data.forEach(item => {
                 const name = item['Họ tên'] || '-', unit = item['Đơn vị'] || '-', direction = item['Chiều đi_đến'] || 'Outbound', country = item['Quốc gia'] || '-', type = item['Loại hình'] || '-';
                 if(direction.toLowerCase().includes('out')) outbound++; else inbound++;
                 tbody.innerHTML += `<tr><td class="py-2 font-bold">${name}</td><td>${unit}</td><td class="font-semibold text-sky-600">${direction}</td><td>${country}</td><td>${type}</td></tr>`;
             });
-            document.getElementById('cbTotal').innerText = data.length;
-            document.getElementById('cbOutbound').innerText = outbound;
-            document.getElementById('cbInbound').innerText = inbound;
-
+            document.getElementById('cbTotal').innerText = data.length; document.getElementById('cbOutbound').innerText = outbound; document.getElementById('cbInbound').innerText = inbound;
             if(charts.chart_cb) charts.chart_cb.destroy();
-            charts.chart_cb = new Chart(document.getElementById('cbChart').getContext('2d'), {
-                type: 'bar',
-                data: { labels: ['Cán bộ đi', 'Chuyên gia đến'], datasets: [{ label: 'Số người', data: [outbound, inbound], backgroundColor: ['#0284c7', '#0d9488'] }] },
-                options: { responsive: true, maintainAspectRatio: false }
-            });
+            charts.chart_cb = new Chart(document.getElementById('cbChart').getContext('2d'), { type: 'bar', data: { labels: ['Cán bộ đi', 'Chuyên gia đến'], datasets: [{ label: 'Số người', data: [outbound, inbound], backgroundColor: ['#0284c7', '#0d9488'] }] }, options: { responsive: true, maintainAspectRatio: false } });
         }
-
         function renderSinhVien(data) {
-            let outbound = 0, inbound = 0;
-            const tbody = document.querySelector('#svTable table tbody'); tbody.innerHTML = '';
+            let outbound = 0, inbound = 0; const tbody = document.querySelector('#svTable table tbody'); tbody.innerHTML = '';
             data.forEach(item => {
                 const name = item['Họ tên'] || '-', unit = item['Đơn vị'] || '-', direction = item['Chiều đi_đến'] || 'Outbound', country = item['Quốc gia'] || '-', type = item['Loại hình'] || '-';
                 if(direction.toLowerCase().includes('out')) outbound++; else inbound++;
                 tbody.innerHTML += `<tr><td class="py-2 font-bold">${name}</td><td>${unit}</td><td class="font-semibold text-purple-600">${direction}</td><td>${country}</td><td>${type}</td></tr>`;
             });
-            document.getElementById('svTotal').innerText = data.length;
-            document.getElementById('svOutbound').innerText = outbound;
-            document.getElementById('svInbound').innerText = inbound;
-
+            document.getElementById('svTotal').innerText = data.length; document.getElementById('svOutbound').innerText = outbound; document.getElementById('svInbound').innerText = inbound;
             if(charts.chart_sv) charts.chart_sv.destroy();
-            charts.chart_sv = new Chart(document.getElementById('svChart').getContext('2d'), {
-                type: 'bar',
-                data: { labels: ['SV đi Outbound', 'SV đến Inbound'], datasets: [{ label: 'Số lượng', data: [outbound, inbound], backgroundColor: ['#8b5cf6', '#ec4899'] }] },
-                options: { responsive: true, maintainAspectRatio: false }
-            });
+            charts.chart_sv = new Chart(document.getElementById('svChart').getContext('2d'), { type: 'bar', data: { labels: ['SV đi Outbound', 'SV đến Inbound'], datasets: [{ label: 'Số lượng', data: [outbound, inbound], backgroundColor: ['#8b5cf6', '#ec4899'] }] }, options: { responsive: true, maintainAspectRatio: false } });
         }
-
         function renderProject(data) {
-            let activeCount = 0, fundSources = new Set(), fundCounts = {};
-            const tbody = document.querySelector('#pjTable tbody'); tbody.innerHTML = '';
+            let activeCount = 0, fundSources = new Set(), fundCounts = {}; const tbody = document.querySelector('#pjTable tbody'); tbody.innerHTML = '';
             data.forEach(item => {
                 const pName = item['Tên dự án'] || '-', fund = item['Quỹ tài trợ'] || '-', budget = item['Kinh phí'] || '-', status = item['Tình trạng'] || '-';
                 if(fund && fund !== '-') { fundSources.add(fund); fundCounts[fund] = (fundCounts[fund] || 0) + 1; }
                 if(status.toLowerCase().includes('giải ngân') || status.toLowerCase().includes('khai')) activeCount++;
                 tbody.innerHTML += `<tr><td class="py-2 font-bold truncate max-w-[150px]">${pName}</td><td>${fund}</td><td class="font-semibold text-blue-700">${budget}</td><td>${status}</td></tr>`;
             });
-            document.getElementById('pjTotal').innerText = data.length;
-            document.getElementById('pjFunds').innerText = fundSources.size;
-            document.getElementById('pjActive').innerText = activeCount;
-
+            document.getElementById('pjTotal').innerText = data.length; document.getElementById('pjFunds').innerText = fundSources.size; document.getElementById('pjActive').innerText = activeCount;
             if(charts.chart3) charts.chart3.destroy();
-            charts.chart3 = new Chart(document.getElementById('pjChart').getContext('2d'), {
-                type: 'pie',
-                data: { labels: Object.keys(fundCounts), datasets: [{ data: Object.values(fundCounts), backgroundColor: ['#10b981', '#f59e0b', '#3b82f6', '#6366f1'] }] },
-                options: { responsive: true, maintainAspectRatio: false }
-            });
+            charts.chart3 = new Chart(document.getElementById('pjChart').getContext('2d'), { type: 'pie', data: { labels: Object.keys(fundCounts), datasets: [{ data: Object.values(fundCounts), backgroundColor: ['#10b981', '#f59e0b', '#3b82f6', '#6366f1'] }] }, options: { responsive: true, maintainAspectRatio: false } });
         }
-
         function renderDelegation(data) {
-            let dlCountries = new Set(), dlUnits = new Set(), countryCounts = {};
-            const tbody = document.querySelector('#dlTable tbody'); tbody.innerHTML = '';
+            let dlCountries = new Set(), dlUnits = new Set(), countryCounts = {}; const tbody = document.querySelector('#dlTable tbody'); tbody.innerHTML = '';
             data.forEach(item => {
                 const name = item['Đoàn đến'] || '-', country = item['Quốc gia'] || '-', unit = item['Đơn vị tiếp đón'] || '-', date = item['Ngày đến'] || '-';
                 if(country && country !== '-') { dlCountries.add(country); countryCounts[country] = (countryCounts[country] || 0) + 1; }
                 if(unit && unit !== '-') dlUnits.add(unit);
                 tbody.innerHTML += `<tr><td class="py-2 font-bold truncate max-w-[150px]">${name}</td><td>${country}</td><td>${unit}</td><td class="font-mono text-teal-700 font-semibold">${date}</td></tr>`;
             });
-            document.getElementById('dlTotal').innerText = data.length;
-            document.getElementById('dlCountries').innerText = dlCountries.size;
-            document.getElementById('dlUnits').innerText = dlUnits.size;
-
+            document.getElementById('dlTotal').innerText = data.length; document.getElementById('dlCountries').innerText = dlCountries.size; document.getElementById('dlUnits').innerText = dlUnits.size;
             if(charts.chart4) charts.chart4.destroy();
-            charts.chart4 = new Chart(document.getElementById('dlChart').getContext('2d'), {
-                type: 'polarArea',
-                data: { labels: Object.keys(countryCounts), datasets: [{ data: Object.values(countryCounts), backgroundColor: ['#0d9488', '#8b5cf6', '#ec4899', '#f59e0b'] }] },
-                options: { responsive: true, maintainAspectRatio: false }
-            });
+            charts.chart4 = new Chart(document.getElementById('dlChart').getContext('2d'), { type: 'polarArea', data: { labels: Object.keys(countryCounts), datasets: [{ data: Object.values(countryCounts), backgroundColor: ['#0d9488', '#8b5cf6', '#ec4899', '#f59e0b'] }] }, options: { responsive: true, maintainAspectRatio: false } });
         }
-
         function renderOutbound(data) {
-            let outCountries = new Set(), outUnits = new Set(), countryCounts = {};
-            const tbody = document.querySelector('#outTable tbody'); tbody.innerHTML = '';
+            let outCountries = new Set(), outUnits = new Set(), countryCounts = {}; const tbody = document.querySelector('#outTable tbody'); tbody.innerHTML = '';
             data.forEach(item => {
                 const leader = item['Trưởng đoàn'] || '-', dest = item['Quốc gia đến'] || '-', origin = item['Đơn vị gốc'] || '-', time = item['Thời gian'] || '-';
                 if(dest) { outCountries.add(dest); countryCounts[dest] = (countryCounts[dest] || 0) + 1; }
                 if(origin) outUnits.add(origin);
                 tbody.innerHTML += `<tr><td class="py-2 font-bold">${leader}</td><td>${dest}</td><td>${origin}</td><td class="font-semibold text-orange-600">${time}</td></tr>`;
             });
-            document.getElementById('outTotal').innerText = data.length;
-            document.getElementById('outCountries').innerText = outCountries.size;
-            document.getElementById('outUnits').innerText = outUnits.size;
-
+            document.getElementById('outTotal').innerText = data.length; document.getElementById('outCountries').innerText = outCountries.size; document.getElementById('outUnits').innerText = outUnits.size;
             if(charts.chart_out) charts.chart_out.destroy();
-            charts.chart_out = new Chart(document.getElementById('outChart').getContext('2d'), {
-                type: 'bar',
-                data: { labels: Object.keys(countryCounts), datasets: [{ label: 'Số đoàn đi', data: Object.values(countryCounts), backgroundColor: '#ea580c' }] },
-                options: { responsive: true, maintainAspectRatio: false }
-            });
+            charts.chart_out = new Chart(document.getElementById('outChart').getContext('2d'), { type: 'bar', data: { labels: Object.keys(countryCounts), datasets: [{ label: 'Số đoàn đi', data: Object.values(countryCounts), backgroundColor: '#ea580c' }] }, options: { responsive: true, maintainAspectRatio: false } });
         }
-
         function renderLienKet(data) {
-            let lkUnits = new Set(), totalStudents = 0, countryCounts = {};
-            const tbody = document.querySelector('#lkTable tbody'); tbody.innerHTML = '';
+            let lkUnits = new Set(), totalStudents = 0, countryCounts = {}; const tbody = document.querySelector('#lkTable tbody'); tbody.innerHTML = '';
             data.forEach(item => {
                 const name = item['Tên chương trình'] || '-', partner = item['Đối tác'] || '-', host = item['Trường chủ trì'] || '-', quota = parseInt(item['Chỉ tiêu tuyển sinh']) || 0, country = item['Quốc gia đối tác'] || '-';
-                if(host) lkUnits.add(host);
-                totalStudents += quota;
-                if(country && country !== '-') countryCounts[country] = (countryCounts[country] || 0) + 1;
+                if(host) lkUnits.add(host); totalStudents += quota; if(country && country !== '-') countryCounts[country] = (countryCounts[country] || 0) + 1;
                 tbody.innerHTML += `<tr><td class="py-2 font-bold truncate max-w-[200px]" title="${name}">${name}</td><td>${partner}</td><td>${host}</td><td class="font-bold text-blue-700">${quota}</td></tr>`;
             });
-            document.getElementById('lkTotal').innerText = data.length;
-            document.getElementById('lkUnits').innerText = lkUnits.size;
-            document.getElementById('lkStudents').innerText = totalStudents;
-
+            document.getElementById('lkTotal').innerText = data.length; document.getElementById('lkUnits').innerText = lkUnits.size; document.getElementById('lkStudents').innerText = totalStudents;
             if(charts.chart_lk) charts.chart_lk.destroy();
-            charts.chart_lk = new Chart(document.getElementById('lkChart').getContext('2d'), {
-                type: 'doughnut',
-                data: { labels: Object.keys(countryCounts), datasets: [{ data: Object.values(countryCounts), backgroundColor: ['#0284c7','#f59e0b','#0d9488','#6366f1','#ec4899'] }] },
-                options: { responsive: true, maintainAspectRatio: false }
-            });
+            charts.chart_lk = new Chart(document.getElementById('lkChart').getContext('2d'), { type: 'doughnut', data: { labels: Object.keys(countryCounts), datasets: [{ data: Object.values(countryCounts), backgroundColor: ['#0284c7','#f59e0b','#0d9488','#6366f1','#ec4899'] }] }, options: { responsive: true, maintainAspectRatio: false } });
         }
-
         function renderNganHan(data) {
-            let totalStudents = 0, typeCounts = { inbound: 0, outbound: 0 };
-            const tbody = document.querySelector('#nhTable tbody'); tbody.innerHTML = '';
+            let totalStudents = 0, typeCounts = { inbound: 0, outbound: 0 }; const tbody = document.querySelector('#nhTable tbody'); tbody.innerHTML = '';
             data.forEach(item => {
                 const name = item['Tên khóa học ngắn hạn'] || '-', host = item['Đơn vị tổ chức'] || '-', country = item['Quốc gia hợp tác'] || '-', count = parseInt(item['Số lượng học viên']) || 0, form = item['Hình thức'] || 'Inbound';
-                totalStudents += count;
-                if(form.toLowerCase().includes('in')) typeCounts.inbound += count; else typeCounts.outbound += count;
+                totalStudents += count; if(form.toLowerCase().includes('in')) typeCounts.inbound += count; else typeCounts.outbound += count;
                 tbody.innerHTML += `<tr><td class="py-2 font-bold">${name}</td><td>${host}</td><td>${country}</td><td class="font-bold text-emerald-700">${count} (${form})</td></tr>`;
             });
-            document.getElementById('nhTotal').innerText = data.length;
-            document.getElementById('nhStudents').innerText = totalStudents;
-
+            document.getElementById('nhTotal').innerText = data.length; document.getElementById('nhStudents').innerText = totalStudents;
             if(charts.chart_nh) charts.chart_nh.destroy();
-            charts.chart_nh = new Chart(document.getElementById('nhChart').getContext('2d'), {
-                type: 'pie',
-                data: { labels: ['Chiều đến (Inbound)', 'Chiều đi (Outbound)'], datasets: [{ data: [typeCounts.inbound, typeCounts.outbound], backgroundColor: ['#10b981', '#f59e0b'] }] },
-                options: { responsive: true, maintainAspectRatio: false }
-            });
+            charts.chart_nh = new Chart(document.getElementById('nhChart').getContext('2d'), { type: 'pie', data: { labels: ['Chiều đến (Inbound)', 'Chiều đi (Outbound)'], datasets: [{ data: [typeCounts.inbound, typeCounts.outbound], backgroundColor: ['#10b981', '#f59e0b'] }] }, options: { responsive: true, maintainAspectRatio: false } });
         }
     </script>
 </body>
