@@ -8,8 +8,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 </head>
-<body class="bg-slate-100 font-sans min-h-screen text-gray-800 flex flex-col md:flex-row">
+<body class="bg-slate-100 font-sans min-h-screen flex flex-col md:flex-row">
 
+    <!-- NÚT MENU HAMBURGER (CHO DI ĐỘNG) -->
     <div class="md:hidden bg-blue-950 text-white p-4 flex justify-between items-center shadow-md sticky top-0 z-50">
         <div>
             <h2 class="text-sm font-black uppercase text-orange-400">Đại học Huế</h2>
@@ -20,8 +21,9 @@
         </button>
     </div>
 
+    <!-- SIDEBAR ĐIỀU HƯỚNG BÊN TRÁI -->
     <aside id="sidebar" class="w-64 bg-blue-950 text-white flex flex-col fixed md:sticky top-0 left-0 h-full md:h-screen z-50 shadow-xl transition-transform duration-300 transform -translate-x-full md:translate-x-0">
-        <div class="p-6 border-b border-blue-900 flex justify-between items-center">
+        <div class="p-5 border-b border-blue-900 flex justify-between items-center">
             <div>
                 <h2 class="text-lg font-black uppercase tracking-wider text-orange-400">Đại học Huế</h2>
                 <p class="text-xs text-blue-200 mt-1 font-medium">Hệ thống HTQT Toàn diện</p>
@@ -30,18 +32,31 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
         </div>
-        <nav class="flex-grow p-4 space-y-2">
-            <button onclick="switchTab('phanh_he_1')" id="btn_phanh_he_1" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-blue-800 text-white font-bold transition">
-                <span>🤝</span> Đối tác & Thỏa thuận
+        <nav class="flex-grow p-4 space-y-1.5 overflow-y-auto">
+            <!-- ĐÃ ĐỔI TÊN THÀNH VĂN BẢN HỢP TÁC -->
+            <button onclick="switchTab('phanh_he_1')" id="btn_phanh_he_1" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl bg-blue-800 text-white font-bold transition text-sm">
+                <span>🤝</span> Văn bản hợp tác
             </button>
-            <button onclick="switchTab('phanh_he_2')" id="btn_phanh_he_2" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition">
-                <span>✈️</span> Trao đổi Mobility
+            <button onclick="switchTab('phanh_he_2_can_bo')" id="btn_phanh_he_2_can_bo" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+                <span>👨‍🏫</span> Trao đổi Cán bộ
             </button>
-            <button onclick="switchTab('phanh_he_3')" id="btn_phanh_he_3" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition">
+            <button onclick="switchTab('phanh_he_2_sinh_vien')" id="btn_phanh_he_2_sinh_vien" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+                <span>🎓</span> Trao đổi Sinh viên
+            </button>
+            <button onclick="switchTab('phanh_he_4_doan_vao')" id="btn_phanh_he_4_doan_vao" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+                <span>🛫</span> Đoàn quốc tế vào
+            </button>
+            <button onclick="switchTab('phanh_he_6_doan_ra')" id="btn_phanh_he_6_doan_ra" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+                <span>🛬</span> Đoàn công tác ra
+            </button>
+            <button onclick="switchTab('phanh_he_3')" id="btn_phanh_he_3" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
                 <span>🇪🇺</span> Dự án & Tài trợ
             </button>
-            <button onclick="switchTab('phanh_he_4')" id="btn_phanh_he_4" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition">
-                <span>🏛️</span> Sự kiện & Tiếp đoàn
+            <button onclick="switchTab('phanh_he_7_lien_ket')" id="btn_phanh_he_7_lien_ket" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+                <span>📚</span> Liên kết quốc tế
+            </button>
+            <button onclick="switchTab('phanh_he_8_ngan_han')" id="btn_phanh_he_8_ngan_han" class="tab-btn w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-blue-200 hover:bg-blue-900/50 font-semibold transition text-sm">
+                <span>⏱️</span> Trao đổi ngắn hạn
             </button>
         </nav>
         <div class="p-4 border-t border-blue-900 text-center text-xs text-blue-300">
@@ -51,18 +66,31 @@
 
     <div id="overlay" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"></div>
 
+    <!-- VÙNG NỘI DUNG CHÍNH BÊN PHẢI -->
     <div class="flex-grow p-4 md:p-8 min-h-screen flex flex-col w-full overflow-x-hidden">
         
-        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 bg-white p-5 rounded-2xl shadow-sm border border-gray-100 gap-2">
-            <div>
-                <h2 id="pageTitle" class="text-xl md:text-2xl font-black text-gray-800 leading-tight">Phân hệ 1: Đối tác & Thỏa thuận (MoUs)</h2>
+        <!-- HEADER VỚI THANH TÌM KIẾM TRA CỨU -->
+        <header class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 bg-white p-5 rounded-2xl shadow-sm border border-gray-100 gap-4">
+            <div class="min-w-[280px]">
+                <!-- ĐÃ ĐỔI TIÊU ĐỀ TRANG MẶC ĐỊNH -->
+                <h2 id="pageTitle" class="text-xl md:text-2xl font-black text-gray-800 leading-tight">Văn bản hợp tác (MoUs/MoAs)</h2>
                 <p class="text-gray-500 text-xs mt-1">Hệ thống cơ sở dữ liệu tích hợp trực tuyến Đại học Huế</p>
             </div>
-            <span class="px-3 py-1.5 bg-green-50 text-green-700 text-[10px] font-bold rounded-full whitespace-nowrap">● Trực tuyến (Data Integrated)</span>
+            
+            <!-- THANH TÌM KIẾM THÔNG TIN NHANH -->
+            <div class="relative w-full lg:max-w-md flex-grow">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                <input type="text" id="dashboardSearchInput" oninput="handleSearch(this.value)" placeholder="Tra cứu nhanh tên đối tác, quốc gia, đơn vị..." class="w-full pl-9 pr-4 py-2.5 text-sm bg-slate-50 border border-gray-100 rounded-xl outline-none focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition">
+            </div>
+
+            <span class="px-3 py-1.5 bg-green-50 text-green-700 text-[10px] font-bold rounded-full whitespace-nowrap hidden sm:inline-block">● Trực tuyến (Data Integrated)</span>
         </header>
 
         <div id="mainDashboardView" class="space-y-6">
             
+            <!-- PHÂN HỆ 1: VĂN BẢN HỢP TÁC -->
             <div id="phanh_he_1" class="tab-content space-y-6">
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-blue-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng văn bản</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="mouTotal">0</p></div>
@@ -83,18 +111,19 @@
                 </div>
             </div>
 
-            <div id="phanh_he_2" class="tab-content space-y-6 hidden">
+            <!-- PHÂN HỆ 2A: TRAO ĐỔI CÁN BỘ -->
+            <div id="phanh_he_2_can_bo" class="tab-content space-y-6 hidden">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-indigo-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng lượt trao đổi</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="mbTotal">0</p></div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-sky-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Chiều đi (Outbound)</p><p class="text-xl md:text-2xl font-black text-sky-600 mt-1" id="mbOutbound">0</p></div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-teal-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Chiều đến (Inbound)</p><p class="text-xl md:text-2xl font-black text-teal-600 mt-1" id="mbInbound">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-indigo-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng cán bộ trao đổi</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="cbTotal">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-sky-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Cán bộ đi (Outbound)</p><p class="text-xl md:text-2xl font-black text-sky-600 mt-1" id="cbOutbound">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-teal-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Chuyên gia đến (Inbound)</p><p class="text-xl md:text-2xl font-black text-teal-600 mt-1" id="cbInbound">0</p></div>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="h-64"><canvas id="mbChart"></canvas></div></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="h-64"><canvas id="cbChart"></canvas></div></div>
                     <div class="bg-white p-4 rounded-xl shadow-sm lg:col-span-2">
                         <div class="overflow-x-auto text-xs max-w-full">
-                            <table class="w-full text-left min-w-[500px]" id="mbTable">
-                                <thead><tr class="font-bold text-gray-400 border-b pb-2"><th>Họ tên</th><th>Đơn vị</th><th>Chiều</th><th>Quốc gia</th></tr></thead>
+                            <table class="w-full text-left" id="cbTable">
+                                <thead><tr class="font-bold text-gray-400 border-b pb-2"><th>Họ tên</th><th>Đơn vị</th><th>Chiều</th><th>Quốc gia</th><th>Vị trí</th></tr></thead>
                                 <tbody class="divide-y text-gray-600"></tbody>
                             </table>
                         </div>
@@ -102,6 +131,67 @@
                 </div>
             </div>
 
+            <!-- PHÂN HỆ 2B: TRAO ĐỔI SINH VIÊN -->
+            <div id="phanh_he_2_sinh_vien" class="tab-content space-y-6 hidden">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-violet-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng sinh viên trao đổi</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="svTotal">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-purple-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Sinh viên đi (Outbound)</p><p class="text-xl md:text-2xl font-black text-purple-600 mt-1" id="svOutbound">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-fuchsia-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Sinh viên đến (Inbound)</p><p class="text-xl md:text-2xl font-black text-fuchsia-600 mt-1" id="svInbound">0</p></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="h-64"><canvas id="svChart"></canvas></div></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm lg:col-span-2">
+                        <div class="overflow-x-auto text-xs max-w-full text-gray-600" id="svTable">
+                            <table class="w-full text-left min-w-[500px]">
+                                <thead><tr class="font-bold text-gray-400 border-b pb-2"><th>Họ tên</th><th>Đơn vị</th><th>Chiều</th><th>Quốc gia</th><th>Bậc học</th></tr></thead>
+                                <tbody class="divide-y"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHÂN HỆ 4: ĐOÀN VÀO -->
+            <div id="phanh_he_4_doan_vao" class="tab-content space-y-6 hidden">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-teal-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng đoàn vào</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="dlTotal">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-fuchsia-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Quốc gia đối tác</p><p class="text-xl md:text-2xl font-black text-fuchsia-600 mt-1" id="dlCountries">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-blue-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Đơn vị tiếp đón</p><p class="text-xl md:text-2xl font-black text-blue-600 mt-1" id="dlUnits">0</p></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="h-64"><canvas id="dlChart"></canvas></div></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm lg:col-span-2">
+                        <div class="overflow-x-auto text-xs max-w-full">
+                            <table class="w-full text-left" id="dlTable">
+                                <thead><tr class="font-bold text-gray-400 border-b pb-2"><th>Đoàn đến</th><th>Quốc gia</th><th>Đơn vị</th><th>Ngày đến</th></tr></thead>
+                                <tbody class="divide-y text-gray-600"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHÂN HỆ 6: ĐOÀN RA -->
+            <div id="phanh_he_6_doan_ra" class="tab-content space-y-6 hidden">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-orange-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng đoàn công tác ra</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="outTotal">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-amber-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Quốc gia đến thăm</p><p class="text-xl md:text-2xl font-black text-amber-600 mt-1" id="outCountries">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-red-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Đơn vị cử đi</p><p class="text-xl md:text-2xl font-black text-red-600 mt-1" id="outUnits">0</p></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="h-64"><canvas id="outChart"></canvas></div></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm lg:col-span-2">
+                        <div class="overflow-x-auto text-xs max-w-full">
+                            <table class="w-full text-left" id="outTable">
+                                <thead><tr class="font-bold text-gray-400 border-b pb-2"><th>Trưởng đoàn / Đại diện cử đi</th><th>Quốc gia đến</th><th>Đơn vị gốc</th><th>Thời gian</th></tr></thead>
+                                <tbody class="divide-y text-gray-600"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHÂN HỆ 3: DỰ ÁN QUỐC TẾ -->
             <div id="phanh_he_3" class="tab-content space-y-6 hidden">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-emerald-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng số dự án</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="pjTotal">0</p></div>
@@ -112,7 +202,7 @@
                     <div class="bg-white p-4 rounded-xl shadow-sm"><div class="h-64"><canvas id="pjChart"></canvas></div></div>
                     <div class="bg-white p-4 rounded-xl shadow-sm lg:col-span-2">
                         <div class="overflow-x-auto text-xs max-w-full">
-                            <table class="w-full text-left min-w-[500px]" id="pjTable">
+                            <table class="w-full text-left" id="pjTable">
                                 <thead><tr class="font-bold text-gray-400 border-b pb-2"><th>Tên dự án</th><th>Quỹ</th><th>Kinh phí</th><th>Tình trạng</th></tr></thead>
                                 <tbody class="divide-y text-gray-600"></tbody>
                             </table>
@@ -121,18 +211,39 @@
                 </div>
             </div>
 
-            <div id="phanh_he_4" class="tab-content space-y-6 hidden">
+            <!-- PHÂN HỆ 7: CHƯƠNG TRÌNH LIÊN KẾT QUỐC TẾ -->
+            <div id="phanh_he_7_lien_ket" class="tab-content space-y-6 hidden">
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-teal-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng lượt tiếp đoàn</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="dlTotal">0</p></div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-fuchsia-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Quốc gia đối tác</p><p class="text-xl md:text-2xl font-black text-fuchsia-600 mt-1" id="dlCountries">0</p></div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-blue-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Đơn vị tiếp đón</p><p class="text-xl md:text-2xl font-black text-blue-600 mt-1" id="dlUnits">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-cyan-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng chương trình liên kết</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="lkTotal">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-blue-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Đơn vị đào tạo</p><p class="text-xl md:text-2xl font-black text-blue-600 mt-1" id="lkUnits">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-teal-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng chỉ tiêu tuyển sinh</p><p class="text-xl md:text-2xl font-black text-teal-600 mt-1" id="lkStudents">0</p></div>
                 </div>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="h-64"><canvas id="dlChart"></canvas></div></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="h-64"><canvas id="lkChart"></canvas></div></div>
                     <div class="bg-white p-4 rounded-xl shadow-sm lg:col-span-2">
                         <div class="overflow-x-auto text-xs max-w-full">
-                            <table class="w-full text-left min-w-[500px]" id="dlTable">
-                                <thead><tr class="font-bold text-gray-400 border-b pb-2"><th>Đoàn đến</th><th>Quốc gia</th><th>Đơn vị</th><th>Ngày đến</th></tr></thead>
+                            <table class="w-full text-left" id="lkTable">
+                                <thead><tr class="font-bold text-gray-400 border-b pb-2"><th>Tên chương trình / Ngành học</th><th>Đối tác chiến lược</th><th>Trường chủ trì</th><th>Chỉ tiêu</th></tr></thead>
+                                <tbody class="divide-y text-gray-600"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHÂN HỆ 8: CHƯƠNG TRÌNH TRAO ĐỔI NGẮN HẠN -->
+            <div id="phanh_he_8_ngan_han" class="tab-content space-y-6 hidden">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-lime-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Số lớp / Khóa ngắn hạn</p><p class="text-xl md:text-2xl font-black text-gray-800 mt-1" id="nhTotal">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-emerald-600"><p class="text-gray-400 text-[10px] font-bold uppercase">Tổng số học viên nhập học</p><p class="text-xl md:text-2xl font-black text-emerald-600 mt-1" id="nhStudents">0</p></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-yellow-500"><p class="text-gray-400 text-[10px] font-bold uppercase">Hình thức thực hiện</p><p class="text-xl md:text-2xl font-black text-yellow-600 mt-1">Inbound / Outbound</p></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-4 rounded-xl shadow-sm"><div class="h-64"><canvas id="nhChart"></canvas></div></div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm lg:col-span-2">
+                        <div class="overflow-x-auto text-xs max-w-full">
+                            <table class="w-full text-left" id="nhTable">
+                                <thead><tr class="font-bold text-gray-400 border-b pb-2"><th>Tên khóa học ngắn hạn</th><th>Đơn vị tổ chức</th><th>Quốc gia hợp tác</th><th>Số lượng học viên</th></tr></thead>
                                 <tbody class="divide-y text-gray-600"></tbody>
                             </table>
                         </div>
@@ -143,6 +254,7 @@
         </div>
     </div>
 
+    <!-- KHU VỰC DỮ LIỆU RUỘT TÍCH HỢP SẴN -->
     <script type="text/csv" id="csvDataPhanhHe1">Tên đối tác,Quốc gia,Đơn vị,Loại hình,Ngày hết hạn,Trạng thái
 University and Tokiwa,Nhật Bản,Trường Đại học Ngoại ngữ,Thỏa thuận,07/06/2026,Còn hoạt động
 Osaka University of Tourism,Nhật Bản,Trường Đại học Ngoại ngữ,Thỏa thuận,21/06/2026,Còn hoạt động
@@ -176,25 +288,65 @@ Phái đoàn Đại học Wageningen,Hà Lan,Trường Đại học Nông Lâm,0
 Phái đoàn Y khoa Đại học Yale,Hoa Kỳ,Trường Đại học Y Dược,07/01/2026,GS. Robert M. Rohrbaugh
 Đoàn Đại học Quốc gia Singapore (NUS),Singapore,Trường Đại học Y Dược,22/07/2026,Dr. Tan Chorh Chuan</script>
 
+    <script type="text/csv" id="csvDataPhanhHe6">Trưởng đoàn,Quốc gia đến,Đơn vị gốc,Thời gian,Mục đích
+Đoàn Giám đốc Đại học Huế,Thái Lan,Đại học Huế,16-18/07/2026,Tham dự hội nghị thượng đỉnh Gen SEA Summit tại Khon Kaen
+Đoàn Ban HTQT và Chuyên viên,Hà Nội - VN,Ban Hợp tác Quốc tế,05/05/2026,Tham gia tập huấn Quốc tế hóa giáo dục đại học tại Hà Nội
+Đoàn cán bộ Trường Ngoại ngữ,Đài Loan,Trường Đại học Ngoại ngữ,10/08/2026,Hợp tác song phương với Đại học Quốc gia Quemoy</script>
+
+    <script type="text/csv" id="csvDataPhanhHe7">Tên chương trình,Đối tác,Trường chủ trì,Chỉ tiêu tuyển sinh,Quốc gia đối tác
+Cử nhân liên kết đào tạo Thạc sĩ Công nghệ,Đại học Quốc gia Đài Loan (NTU),Trường Đại học Khoa học,35,Đài Loan
+Liên kết đào tạo Quản trị du lịch và Khách sạn,Đại học Du lịch Osaka,Trường Đại học Ngoại ngữ,40,Nhật Bản
+Chương trình Thạc sĩ Quốc tế Okayama-Việt Nam,Đại học Okayama,Trường Đại học Nông Lâm,20,Nhật Bản
+Cử nhân liên kết đào tạo ngành Kinh tế quốc tế,Đại học Akron,Trường Đại học Kinh tế,30,Hoa Kỳ</script>
+
+    <script type="text/csv" id="csvDataPhanhHe8">Tên khóa học ngắn hạn,Đơn vị tổ chức,Quốc gia hợp tác,Số lượng học viên,Hình thức
+Summer School 2026: Văn hóa và Ngôn ngữ Việt Nam,Ban Hợp tác Quốc tế,Nhật Bản (Ferris),25,Inbound
+Khóa tập huấn chuyên sâu Y học cổ truyền ngắn hạn,Trường Đại học Y Dược,Thái Lan,15,Outbound
+Trại hè trải nghiệm STEAM và Chuyển đổi số,Trường Đại học Sư phạm,Hoa Kỳ,18,Inbound
+Chương trình thực tập ngắn hạn ngành Du lịch,Đại học Khon Kaen,Trường Đại học Ngoại ngữ,12,Outbound</script>
+
+    <!-- THUẬT TOÁN ĐIỀU HƯỚNG VÀ XỬ LÝ -->
     <script>
         let currentTab = 'phanh_he_1';
-        let database = { phanh_he_1: null, phanh_he_2: null, phanh_he_3: null, phanh_he_4: null };
-        let charts = { chart1: null, chart2: null, chart3: null, chart4: null };
+        let database = {};
+        let charts = {};
 
         window.addEventListener('DOMContentLoaded', () => {
             database.phanh_he_1 = Papa.parse(document.getElementById('csvDataPhanhHe1').textContent, {header:true, skipEmptyLines:true}).data;
-            database.phanh_he_2 = Papa.parse(document.getElementById('csvDataPhanhHe2').textContent, {header:true, skipEmptyLines:true}).data;
+            let rawMobility = Papa.parse(document.getElementById('csvDataPhanhHe2').textContent, {header:true, skipEmptyLines:true}).data;
+            database.phanh_he_2_can_bo = rawMobility.filter(i => i['Loại hình']?.toLowerCase().includes('cán bộ') || i['Loại hình']?.toLowerCase().includes('chuyên gia'));
+            database.phanh_he_2_sinh_vien = rawMobility.filter(i => i['Loại hình']?.toLowerCase().includes('sinh viên') || i['Loại hình']?.toLowerCase().includes('nghiên cứu'));
             database.phanh_he_3 = Papa.parse(document.getElementById('csvDataPhanhHe3').textContent, {header:true, skipEmptyLines:true}).data;
-            database.phanh_he_4 = Papa.parse(document.getElementById('csvDataPhanhHe4').textContent, {header:true, skipEmptyLines:true}).data;
+            database.phanh_he_4_doan_vao = Papa.parse(document.getElementById('csvDataPhanhHe4').textContent, {header:true, skipEmptyLines:true}).data;
+            database.phanh_he_6_doan_ra = Papa.parse(document.getElementById('csvDataPhanhHe6').textContent, {header:true, skipEmptyLines:true}).data;
+            database.phanh_he_7_lien_ket = Papa.parse(document.getElementById('csvDataPhanhHe7').textContent, {header:true, skipEmptyLines:true}).data;
+            database.phanh_he_8_ngan_han = Papa.parse(document.getElementById('csvDataPhanhHe8').textContent, {header:true, skipEmptyLines:true}).data;
+            
             switchTab('phanh_he_1');
         });
 
-        // Hàm ẩn/hiện Sidebar Menu trên thiết bị di động
         function toggleMobileMenu() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
             sidebar.classList.toggle('-translate-x-full');
             overlay.classList.toggle('hidden');
+        }
+
+        function handleSearch(keyword) {
+            const term = keyword.toLowerCase().trim();
+            const rawData = database[currentTab];
+            const filteredData = rawData.filter(item => 
+                Object.values(item).some(val => String(val).toLowerCase().includes(term))
+            );
+
+            if(currentTab === 'phanh_he_1') renderMou(filteredData);
+            if(currentTab === 'phanh_he_2_can_bo') renderCanBo(filteredData);
+            if(currentTab === 'phanh_he_2_sinh_vien') renderSinhVien(filteredData);
+            if(currentTab === 'phanh_he_3') renderProject(filteredData);
+            if(currentTab === 'phanh_he_4_doan_vao') renderDelegation(filteredData);
+            if(currentTab === 'phanh_he_6_doan_ra') renderOutbound(filteredData);
+            if(currentTab === 'phanh_he_7_lien_ket') renderLienKet(filteredData);
+            if(currentTab === 'phanh_he_8_ngan_han') renderNganHan(filteredData);
         }
 
         function switchTab(tabId) {
@@ -204,23 +356,28 @@ Phái đoàn Y khoa Đại học Yale,Hoa Kỳ,Trường Đại học Y Dược,
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.replace('bg-blue-800', 'text-blue-200'));
             document.getElementById('btn_' + tabId).classList.replace('text-blue-200', 'bg-blue-800');
 
-            const textMap = { 'phanh_he_1': 'Đối tác & Thỏa thuận (MoUs)', 'phanh_he_2': 'Trao đổi Cán bộ & Sinh viên (Mobility)', 'phanh_he_3': 'Dự án Quốc tế & Tài trợ', 'phanh_he_4': 'Sự kiện & Tiếp đoàn' };
+            document.getElementById('dashboardSearchInput').value = '';
+
+            const textMap = { 
+                // ĐÃ ĐỔI TÊN Ở ĐÂY ĐỂ ĐỒNG BỘ HIỂN THỊ
+                'phanh_he_1': 'Văn bản hợp tác (MoUs/MoAs)', 
+                'phanh_he_2_can_bo': 'Trao đổi Cán bộ & Chuyên gia', 
+                'phanh_he_2_sinh_vien': 'Trao đổi Sinh viên & NCS', 
+                'phanh_he_3': 'Dự án Quốc tế & Tài trợ', 
+                'phanh_he_4_doan_vao': 'Đoàn Quốc tế Vào (Inbound)',
+                'phanh_he_6_doan_ra': 'Đoàn Công tác Ra (Outbound)',
+                'phanh_he_7_lien_ket': 'Chương trình Liên kết Quốc tế',
+                'phanh_he_8_ngan_han': 'Chương trình Trao đổi Ngắn hạn'
+            };
             document.getElementById('pageTitle').innerText = textMap[tabId];
 
-            // Ẩn menu di động sau khi bấm chọn danh mục
             const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            if (!sidebar.classList.contains('-translate-x-full')) {
-                toggleMobileMenu();
-            }
+            if (!sidebar.classList.contains('-translate-x-full')) toggleMobileMenu();
 
-            if(currentTab === 'phanh_he_1') buildMouDashboard(database['phanh_he_1']);
-            if(currentTab === 'phanh_he_2') buildMobilityDashboard(database['phanh_he_2']);
-            if(currentTab === 'phanh_he_3') buildProjectDashboard(database['phanh_he_3']);
-            if(currentTab === 'phanh_he_4') buildDelegationDashboard(database['phanh_he_4']);
+            handleSearch('');
         }
 
-        function buildMouDashboard(data) {
+        function renderMou(data) {
             let countries = new Set(), units = new Set(), expiring = 0, countryCounts = {};
             const tbody = document.querySelector('#mouTable tbody'); tbody.innerHTML = '';
             data.forEach(item => {
@@ -244,27 +401,47 @@ Phái đoàn Y khoa Đại học Yale,Hoa Kỳ,Trường Đại học Y Dược,
             });
         }
 
-        function buildMobilityDashboard(data) {
+        function renderCanBo(data) {
             let outbound = 0, inbound = 0;
-            const tbody = document.querySelector('#mbTable tbody'); tbody.innerHTML = '';
+            const tbody = document.querySelector('#cbTable tbody'); tbody.innerHTML = '';
             data.forEach(item => {
-                const name = item['Họ tên'] || '-', unit = item['Đơn vị'] || '-', direction = item['Chiều đi_đến'] || 'Outbound', country = item['Quốc gia'] || '-';
+                const name = item['Họ tên'] || '-', unit = item['Đơn vị'] || '-', direction = item['Chiều đi_đến'] || 'Outbound', country = item['Quốc gia'] || '-', type = item['Loại hình'] || '-';
                 if(direction.toLowerCase().includes('out')) outbound++; else inbound++;
-                tbody.innerHTML += `<tr><td class="py-2 font-bold">${name}</td><td>${unit}</td><td>${direction}</td><td>${country}</td></tr>`;
+                tbody.innerHTML += `<tr><td class="py-2 font-bold">${name}</td><td>${unit}</td><td class="font-semibold text-sky-600">${direction}</td><td>${country}</td><td>${type}</td></tr>`;
             });
-            document.getElementById('mbTotal').innerText = data.length;
-            document.getElementById('mbOutbound').innerText = outbound;
-            document.getElementById('mbInbound').innerText = inbound;
+            document.getElementById('cbTotal').innerText = data.length;
+            document.getElementById('cbOutbound').innerText = outbound;
+            document.getElementById('cbInbound').innerText = inbound;
 
-            if(charts.chart2) charts.chart2.destroy();
-            charts.chart2 = new Chart(document.getElementById('mbChart').getContext('2d'), {
+            if(charts.chart_cb) charts.chart_cb.destroy();
+            charts.chart_cb = new Chart(document.getElementById('cbChart').getContext('2d'), {
                 type: 'bar',
-                data: { labels: ['Chiều đi (Outbound)', 'Chiều đến (Inbound)'], datasets: [{ label: 'Số người', data: [outbound, inbound], backgroundColor: ['#0284c7', '#0d9488'] }] },
+                data: { labels: ['Cán bộ đi', 'Chuyên gia đến'], datasets: [{ label: 'Số người', data: [outbound, inbound], backgroundColor: ['#0284c7', '#0d9488'] }] },
                 options: { responsive: true, maintainAspectRatio: false }
             });
         }
 
-        function buildProjectDashboard(data) {
+        function renderSinhVien(data) {
+            let outbound = 0, inbound = 0;
+            const tbody = document.querySelector('#svTable table tbody'); tbody.innerHTML = '';
+            data.forEach(item => {
+                const name = item['Họ tên'] || '-', unit = item['Đơn vị'] || '-', direction = item['Chiều đi_đến'] || 'Outbound', country = item['Quốc gia'] || '-', type = item['Loại hình'] || '-';
+                if(direction.toLowerCase().includes('out')) outbound++; else inbound++;
+                tbody.innerHTML += `<tr><td class="py-2 font-bold">${name}</td><td>${unit}</td><td class="font-semibold text-purple-600">${direction}</td><td>${country}</td><td>${type}</td></tr>`;
+            });
+            document.getElementById('svTotal').innerText = data.length;
+            document.getElementById('svOutbound').innerText = outbound;
+            document.getElementById('svInbound').innerText = inbound;
+
+            if(charts.chart_sv) charts.chart_sv.destroy();
+            charts.chart_sv = new Chart(document.getElementById('svChart').getContext('2d'), {
+                type: 'bar',
+                data: { labels: ['SV đi Outbound', 'SV đến Inbound'], datasets: [{ label: 'Số lượng', data: [outbound, inbound], backgroundColor: ['#8b5cf6', '#ec4899'] }] },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        }
+
+        function renderProject(data) {
             let activeCount = 0, fundSources = new Set(), fundCounts = {};
             const tbody = document.querySelector('#pjTable tbody'); tbody.innerHTML = '';
             data.forEach(item => {
@@ -285,7 +462,7 @@ Phái đoàn Y khoa Đại học Yale,Hoa Kỳ,Trường Đại học Y Dược,
             });
         }
 
-        function buildDelegationDashboard(data) {
+        function renderDelegation(data) {
             let dlCountries = new Set(), dlUnits = new Set(), countryCounts = {};
             const tbody = document.querySelector('#dlTable tbody'); tbody.innerHTML = '';
             data.forEach(item => {
@@ -302,6 +479,69 @@ Phái đoàn Y khoa Đại học Yale,Hoa Kỳ,Trường Đại học Y Dược,
             charts.chart4 = new Chart(document.getElementById('dlChart').getContext('2d'), {
                 type: 'polarArea',
                 data: { labels: Object.keys(countryCounts), datasets: [{ data: Object.values(countryCounts), backgroundColor: ['#0d9488', '#8b5cf6', '#ec4899', '#f59e0b'] }] },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        }
+
+        function renderOutbound(data) {
+            let outCountries = new Set(), outUnits = new Set(), countryCounts = {};
+            const tbody = document.querySelector('#outTable tbody'); tbody.innerHTML = '';
+            data.forEach(item => {
+                const leader = item['Trưởng đoàn'] || '-', dest = item['Quốc gia đến'] || '-', origin = item['Đơn vị gốc'] || '-', time = item['Thời gian'] || '-';
+                if(dest) { outCountries.add(dest); countryCounts[dest] = (countryCounts[dest] || 0) + 1; }
+                if(origin) outUnits.add(origin);
+                tbody.innerHTML += `<tr><td class="py-2 font-bold">${leader}</td><td>${dest}</td><td>${origin}</td><td class="font-semibold text-orange-600">${time}</td></tr>`;
+            });
+            document.getElementById('outTotal').innerText = data.length;
+            document.getElementById('outCountries').innerText = outCountries.size;
+            document.getElementById('outUnits').innerText = outUnits.size;
+
+            if(charts.chart_out) charts.chart_out.destroy();
+            charts.chart_out = new Chart(document.getElementById('outChart').getContext('2d'), {
+                type: 'bar',
+                data: { labels: Object.keys(countryCounts), datasets: [{ label: 'Số đoàn đi', data: Object.values(countryCounts), backgroundColor: '#ea580c' }] },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        }
+
+        function renderLienKet(data) {
+            let lkUnits = new Set(), totalStudents = 0, countryCounts = {};
+            const tbody = document.querySelector('#lkTable tbody'); tbody.innerHTML = '';
+            data.forEach(item => {
+                const name = item['Tên chương trình'] || '-', partner = item['Đối tác'] || '-', host = item['Trường chủ trì'] || '-', quota = parseInt(item['Chỉ tiêu tuyển sinh']) || 0, country = item['Quốc gia đối tác'] || '-';
+                if(host) lkUnits.add(host);
+                totalStudents += quota;
+                if(country && country !== '-') countryCounts[country] = (countryCounts[country] || 0) + 1;
+                tbody.innerHTML += `<tr><td class="py-2 font-bold truncate max-w-[200px]" title="${name}">${name}</td><td>${partner}</td><td>${host}</td><td class="font-bold text-blue-700">${quota}</td></tr>`;
+            });
+            document.getElementById('lkTotal').innerText = data.length;
+            document.getElementById('lkUnits').innerText = lkUnits.size;
+            document.getElementById('lkStudents').innerText = totalStudents;
+
+            if(charts.chart_lk) charts.chart_lk.destroy();
+            charts.chart_lk = new Chart(document.getElementById('lkChart').getContext('2d'), {
+                type: 'doughnut',
+                data: { labels: Object.keys(countryCounts), datasets: [{ data: Object.values(countryCounts), backgroundColor: ['#0284c7','#f59e0b','#0d9488','#6366f1','#ec4899'] }] },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        }
+
+        function renderNganHan(data) {
+            let totalStudents = 0, typeCounts = { inbound: 0, outbound: 0 };
+            const tbody = document.querySelector('#nhTable tbody'); tbody.innerHTML = '';
+            data.forEach(item => {
+                const name = item['Tên khóa học ngắn hạn'] || '-', host = item['Đơn vị tổ chức'] || '-', country = item['Quốc gia hợp tác'] || '-', count = parseInt(item['Số lượng học viên']) || 0, form = item['Hình thức'] || 'Inbound';
+                totalStudents += count;
+                if(form.toLowerCase().includes('in')) typeCounts.inbound += count; else typeCounts.outbound += count;
+                tbody.innerHTML += `<tr><td class="py-2 font-bold">${name}</td><td>${host}</td><td>${country}</td><td class="font-bold text-emerald-700">${count} (${form})</td></tr>`;
+            });
+            document.getElementById('nhTotal').innerText = data.length;
+            document.getElementById('nhStudents').innerText = totalStudents;
+
+            if(charts.chart_nh) charts.chart_nh.destroy();
+            charts.chart_nh = new Chart(document.getElementById('nhChart').getContext('2d'), {
+                type: 'pie',
+                data: { labels: ['Chiều đến (Inbound)', 'Chiều đi (Outbound)'], datasets: [{ data: [typeCounts.inbound, typeCounts.outbound], backgroundColor: ['#10b981', '#f59e0b'] }] },
                 options: { responsive: true, maintainAspectRatio: false }
             });
         }
